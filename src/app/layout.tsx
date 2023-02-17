@@ -67,8 +67,8 @@ export default function RootLayout({
     <html>
       <head />
       <body>
-        <main className="flex items-center justify-center h-screen bg-alabaster px-44 py-48 font-sans">
-          <section className="flex items-center justify-center bg-magnolia h-full w-full shadow-xl py-12 px-24 max-w-[80%]">
+        <main className="flex items-center justify-center h-screen bg-alabaster font-sans xl:px-44 xl:py-48">
+          <section className="flex items-center justify-center bg-magnolia h-full w-full shadow-xl max-w-[80%] max-h-[70%] xl:max-h-full xl:py-12 xl:px-24 ">
             {children}
           </section>
         </main>

@@ -1,5 +1,5 @@
 import InputField from "components/molecules/InputField";
-import StepsNav from "components/organisms/StepsNav";
+import Image from "next/image";
 
 export const metadata = {
   title: "Subscribed",
@@ -7,27 +7,25 @@ export const metadata = {
 
 export default function StepsPage() {
   return (
-    <div className="flex p-6 bg-white h-full w-full rounded-lg shadow-sm">
-      <StepsNav currStep="summary" />
+    <div className="flex p-4 bg-white h-full w-full rounded-lg shadow-sm">
+      <section className="flex flex-col justify-center items-center lg:py-6 gap-4 mx-auto w-[80%] lg:w-[50%]">
+        <Image
+          src="/assets/images/icon-thank-you.svg"
+          alt=""
+          width={100}
+          height={100}
+          className="h-20 xl:h-24"
+        />
 
-      <section className="flex flex-col justify-between py-6 gap-4 mx-auto w-[60%]">
-        <div className="flex flex-col gap-2">
-          <h1 className="text-marine-blue text-3xl font-bold">Finishing up</h1>
-          <small className="text-cool-gray">
-            Double-check everything looks ok before confirming.
-          </small>
-        </div>
+        <h1 className="text-marine-blue text-xl lg:text-3xl font-bold">
+          Thank you!
+        </h1>
 
-        <div className="flex flex-col gap-3 text-sm">
-          <InputField label="Name" placeholder="e.g. Stephen King" />
-
-          <InputField
-            label="Email Address"
-            placeholder="e.g. stephenking@lorem.com"
-          />
-
-          <InputField label="Phone Number" placeholder="e.g. +1 234 567 890" />
-        </div>
+        <p className="text-cool-gray text-sm lg:text-base text-center">
+          Thanks for confirming yours subscription! We hope you have fun using
+          our platform. If you ever need support, please feel free to email us
+          at support@loremgaming.com.
+        </p>
       </section>
     </div>
   );

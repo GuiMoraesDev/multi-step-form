@@ -4,16 +4,11 @@ type Steps = "personal-info" | "select-plan" | "add-ons" | "summary";
 
 type Props = {
   currStep: Steps;
-}
+};
 
-export default function StepsNav({currStep}: Props) {
+export default function StepsNav({ currStep }: Props) {
   return (
-    <nav
-      className="flex bg-bottom bg-cover p-6 rounded-md w-1/5"
-      style={{
-        backgroundImage: "url('/assets/images/desktop-background.png')",
-      }}
-    >
+    <nav className="flex bg-bottom bg-cover p-6 rounded-md w-1/5 bg-[url('/assets/images/bg-sidebar-desktop.svg')]">
       <ul className="flex flex-col gap-4">
         <li>
           <StepLink
