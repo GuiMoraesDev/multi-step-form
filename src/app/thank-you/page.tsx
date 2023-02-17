@@ -1,31 +1,16 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-
-import Button from "components/atoms/Button";
 import InputField from "components/molecules/InputField";
 import StepsNav from "components/organisms/StepsNav";
 
 export const metadata = {
-  title: "Finishing up",
+  title: "Subscribed",
 };
 
 export default function StepsPage() {
-  const router = useRouter();
-
-  const handlePreviousStep = () => {
-    router.push("/steps/add-ons");
-  };
-
-  const handleNextStep = () => {
-    router.push("/thank-you");
-  };
-
   return (
-    <>
+    <div className="flex p-6 bg-white h-full w-full rounded-lg shadow-sm">
       <StepsNav currStep="summary" />
 
-      <form className="flex flex-col justify-between py-6 gap-4 mx-auto w-[60%]">
+      <section className="flex flex-col justify-between py-6 gap-4 mx-auto w-[60%]">
         <div className="flex flex-col gap-2">
           <h1 className="text-marine-blue text-3xl font-bold">Finishing up</h1>
           <small className="text-cool-gray">
@@ -43,20 +28,7 @@ export default function StepsPage() {
 
           <InputField label="Phone Number" placeholder="e.g. +1 234 567 890" />
         </div>
-
-        <section className="flex items-center justify-between">
-          <Button
-            type="button"
-            variant="secondary"
-            onClick={handlePreviousStep}
-          >
-            Go Back
-          </Button>
-          <Button type="button" onClick={handleNextStep}>
-            Confirm
-          </Button>
-        </section>
-      </form>
-    </>
+      </section>
+    </div>
   );
 }
