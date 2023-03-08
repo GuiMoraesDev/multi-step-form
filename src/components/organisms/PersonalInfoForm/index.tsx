@@ -1,16 +1,13 @@
-import Link from "components/atoms/Link";
 import InputField from "components/molecules/InputField";
+import Form from "components/molecules/Form";
 
 export default function PersonalInfoForm() {
   return (
-    <form className="flex flex-col justify-between py-6 gap-4 mx-auto w-[60%]">
-      <div className="flex flex-col gap-2">
-        <h1 className="text-marine-blue text-3xl font-bold">Personal info</h1>
-        <small className="text-cool-gray">
-          Please provide your name, email address, and phone number.
-        </small>
-      </div>
-
+    <Form
+      title="Personal info"
+      description="Please provide your name, email address, and phone number."
+      nextLink="/steps/select-plan"
+    >
       <div className="flex flex-col gap-3 text-sm">
         <InputField label="Name" placeholder="e.g. Stephen King" />
 
@@ -21,10 +18,6 @@ export default function PersonalInfoForm() {
 
         <InputField label="Phone Number" placeholder="e.g. +1 234 567 890" />
       </div>
-
-      <section className="flex items-center justify-end">
-        <Link href="/steps/select-plan">Next Step</Link>
-      </section>
-    </form>
+    </Form>
   );
 }

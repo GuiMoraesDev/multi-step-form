@@ -1,18 +1,14 @@
-import Link from "components/atoms/Link";
+import Form from "components/molecules/Form";
 import InputField from "components/molecules/InputField";
 
 export default function SelectPlanForm() {
   return (
-    <form className="flex flex-col justify-between py-6 gap-4 mx-auto w-[60%]">
-      <div className="flex flex-col gap-2">
-        <h1 className="text-marine-blue text-3xl font-bold">
-          Select your plan
-        </h1>
-        <small className="text-cool-gray">
-          You have the option of monthly or yearly billing.
-        </small>
-      </div>
-
+    <Form
+      title="Select your plan"
+      description="You have the option of monthly or yearly billing."
+      backLink="/steps/personal-info"
+      nextLink="/steps/add-ons"
+    >
       <div className="flex flex-col gap-3 text-sm">
         <InputField label="Name" placeholder="e.g. Stephen King" />
 
@@ -23,13 +19,6 @@ export default function SelectPlanForm() {
 
         <InputField label="Phone Number" placeholder="e.g. +1 234 567 890" />
       </div>
-
-      <section className="flex items-center justify-between">
-        <Link variant="secondary" href="/steps/personal-info">
-          Go Back
-        </Link>
-        <Link href="/steps/add-ons">Next Step</Link>
-      </section>
-    </form>
+    </Form>
   );
 }

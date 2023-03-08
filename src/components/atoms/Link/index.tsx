@@ -4,6 +4,7 @@ import { colorVariants, ColorVariantsOptions } from "styles/theme";
 
 type Props = PropsWithChildren<LinkProps> & {
   variant?: ColorVariantsOptions;
+  className?: string;
 };
 
 export default function Link({
@@ -11,10 +12,11 @@ export default function Link({
   variant = "primary",
   ...props
 }: Props) {
+  const { className } = props;
   return (
     <NextLink
       {...props}
-      className={`border rounded-lg shadow-md px-6 py-4 font-semibold font-sans ${colorVariants[variant]} transition-all`}
+      className={`border rounded-lg shadow-md px-6 py-4 font-semibold font-sans ${colorVariants[variant]} transition-all ${className}`}
     >
       {children}
     </NextLink>
