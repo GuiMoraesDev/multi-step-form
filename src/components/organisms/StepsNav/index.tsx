@@ -8,8 +8,8 @@ type Props = {
 
 export default function StepsNav({ currStep }: Props) {
   return (
-    <nav className="flex bg-bottom bg-cover p-6 rounded-md w-1/5 bg-[url('/assets/images/bg-sidebar-desktop.svg')]">
-      <ul className="flex flex-col gap-4">
+    <nav className="flex xl:bg-bottom bg-center bg-[length:150%] p-6 rounded-md w-full xl:w-1/5 bg-[url('/assets/images/bg-sidebar-mobile.svg')] xl:bg-[url('/assets/images/bg-sidebar-desktop.svg')]">
+      <ul className="flex xl:flex-col gap-4">
         <li>
           <StepLink
             number={1}

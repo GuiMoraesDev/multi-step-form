@@ -14,7 +14,7 @@ export default function StepLink({
   isSelected = false,
 }: Props) {
   return (
-    <Link href={href} className="flex gap-2  text-sm uppercase">
+    <Link href={href} className="flex gap-2 text-sm uppercase">
       <span
         className={`flex items-center justify-center text-center h-10 w-10 rounded-full border-2 border-magnolia ${
           isSelected
@@ -25,7 +25,7 @@ export default function StepLink({
         {number}
       </span>
 
-      <section className="flex flex-col text-white">
+      <section className="hidden xl:flex flex-col text-white">
         <p>{`Step ${number}`}</p>
         <strong>{title}</strong>
       </section>

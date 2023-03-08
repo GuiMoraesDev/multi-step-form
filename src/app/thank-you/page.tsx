@@ -1,4 +1,3 @@
-import InputField from "components/molecules/InputField";
 import Image from "next/image";
 
 export const metadata = {
