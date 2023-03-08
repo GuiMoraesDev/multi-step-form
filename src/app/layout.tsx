@@ -3,11 +3,11 @@ import "styles/global.css";
 export const metadata = {
   generator: "Next.js",
   applicationName: "Multi step form",
-  referrer: "origin-when-crossorigin",
+  referrer: "origin-when-cross-origin",
   keywords: ["Next.js", "React", "JavaScript", "Form", "multi-step-form"],
-  author: { name: "Guilherme Moraes", url: "https://www.guimoraes.dev/" },
+  authors: { name: "Guilherme Moraes", url: "https://www.guimoraes.dev/" },
   themeColor: "#02295a",
-  colorScheme: "white",
+  colorScheme: "light",
   creator: "Guilherme Moraes",
   publisher: "Guilherme Moraes",
   title: {
@@ -15,9 +15,9 @@ export const metadata = {
     template: "%s | Multi step form",
   },
   formatDetection: {
-    email: "no",
-    address: "no",
-    telephone: "no",
+    email: false,
+    address: false,
+    telephone: false,
   },
   openGraph: {
     title: "Multi step form",
@@ -66,9 +66,10 @@ export default function RootLayout({
   return (
     <html>
       <head />
+
       <body>
-        <main className="flex items-center justify-center h-screen bg-alabaster font-sans xl:px-44 xl:py-48">
-          <section className="flex items-center justify-center bg-magnolia h-full w-full shadow-xl max-w-[80%] max-h-[70%] xl:max-h-full xl:py-12 xl:px-24 ">
+        <main className="flex items-center justify-center h-screen bg-alabaster font-sans xl:px-36 xl:py-40">
+          <section className="flex items-center justify-center bg-magnolia h-full w-full shadow-xl max-w-[80%] max-h-[80%] xl:max-h-full xl:py-14 xl:px-24 ">
             {children}
           </section>
         </main>

@@ -16,7 +16,7 @@ export default function Link({
   return (
     <NextLink
       {...props}
-      className={`border rounded-lg shadow-md px-6 py-4 font-semibold font-sans ${colorVariants[variant]} transition-all ${className}`}
+      className={`border rounded-lg shadow-md px-6 py-4 font-medium font-sans ${colorVariants[variant]} transition-all ${className}`}
     >
       {children}
     </NextLink>
