@@ -1,15 +1,26 @@
+import ErrorMessage, {
+  Props as ErrorProps,
+} from "components/atoms/ErrorMessage";
+import { forwardRef, ForwardRefRenderFunction } from "react";
 import Input, { Props as InputProps } from "../../atoms/Input";
 import Label from "../../atoms/Label";
 
-type Props = InputProps & {
-  label: string;
-};
+type Props = InputProps &
+  ErrorProps & {
+    label: string;
+  };
 
-export default function InputField({ label, ...props }: Props) {
+const InputField: ForwardRefRenderFunction<HTMLInputElement, Props> = (
+  { label, errorMessage, ...props },
+  ref
+) => {
   return (
     <Label>
       {label}
-      <Input {...props} />
+      <ErrorMessage errorMessage={errorMessage} />
+      <Input {...props} hasError={!!errorMessage} ref={ref} />
     </Label>
   );
-}
+};
+
+export default forwardRef(InputField);

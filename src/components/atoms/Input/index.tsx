@@ -1,7 +1,22 @@
-import { HTMLAttributes } from "react";
+import { forwardRef, ForwardRefRenderFunction, HTMLAttributes } from "react";
 
-export type Props = HTMLAttributes<HTMLInputElement>;
+export type Props = HTMLAttributes<HTMLInputElement> & {
+  hasError?: boolean;
+};
 
-export default function Input({ ...props }: Props) {
-  return <input {...props} className="p-3 rounded-md border" />;
-}
+const Input: ForwardRefRenderFunction<HTMLInputElement, Props> = (
+  { hasError, ...props },
+  ref
+) => {
+  return (
+    <input
+      {...props}
+      className={`p-3 rounded-md border outline-pastel-blue ${
+        hasError && "border-strawberry-red"
+      }`}
+      ref={ref}
+    />
+  );
+};
+
+export default forwardRef(Input);
