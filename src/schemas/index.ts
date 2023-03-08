@@ -18,3 +18,12 @@ export const personalInfoSchema = z.object({
 });
 
 export type PersonalInfoInputs = z.infer<typeof personalInfoSchema>;
+
+export const selectPlanSchema = z.object({
+  "select-plan": z
+    .string()
+    .min(1, { message: "You need to select a plan before continue" }),
+  "billed-yearly": z.boolean(),
+});
+
+export type SelectPlanInputs = z.infer<typeof selectPlanSchema>;
