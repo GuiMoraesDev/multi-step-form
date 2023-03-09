@@ -1,6 +1,6 @@
-import InputField from "components/molecules/InputField";
-import Form from "components/molecules/Form";
 import Link from "components/atoms/Link";
+import Form from "components/molecules/Form";
+import InputField from "components/molecules/InputField";
 
 export default function AddOnsForm() {
   return (

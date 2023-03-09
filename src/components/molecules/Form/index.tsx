@@ -1,4 +1,3 @@
-import Link from "components/atoms/Link";
 import { HTMLAttributes, PropsWithChildren } from "react";
 
 type Props = HTMLAttributes<HTMLFormElement> & {

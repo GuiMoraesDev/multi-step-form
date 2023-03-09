@@ -1,5 +1,6 @@
-import { PropsWithChildren } from "react";
 import NextLink, { LinkProps } from "next/link";
+import { PropsWithChildren } from "react";
+
 import { colorVariants, ColorVariantsOptions } from "styles/theme";
 
 type Props = PropsWithChildren<LinkProps> & {

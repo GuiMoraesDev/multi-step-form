@@ -1,16 +1,16 @@
 "use client";
 
-import InputField from "components/molecules/InputField";
-import Form from "components/molecules/Form";
-import { SubmitHandler } from "react-hook-form";
-import Button from "components/atoms/Button";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PersonalInfoInputs, personalInfoSchema } from "schemas";
-import onSubmitError from "helpers/onSubmitError";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
+import { useForm , SubmitHandler } from "react-hook-form";
+
+import Button from "components/atoms/Button";
+import Form from "components/molecules/Form";
+import InputField from "components/molecules/InputField";
 import { useSubscription } from "context/subscription";
+import onSubmitError from "helpers/onSubmitError";
+import { PersonalInfoInputs, personalInfoSchema } from "schemas";
 
 export default function PersonalInfoForm() {
   const { push } = useRouter();

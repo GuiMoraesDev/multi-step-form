@@ -1,5 +1,5 @@
-import { forwardRef, ForwardRefRenderFunction } from "react";
 import Image from "next/image";
+import { forwardRef, ForwardRefRenderFunction } from "react";
 
 type Props = {
   image_src: string;

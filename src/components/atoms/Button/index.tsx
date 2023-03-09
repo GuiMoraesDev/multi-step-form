@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from "react";
+
 import { colorVariants, ColorVariantsOptions } from "styles/theme";
 
 type Props = PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>> & {
