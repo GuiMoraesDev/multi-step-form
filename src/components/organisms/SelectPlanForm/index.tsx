@@ -44,10 +44,7 @@ const prices: PriceOptions = {
 export default function SelectPlanForm() {
   const { push } = useRouter();
 
-  const {
-    data: { selectPlan },
-    setSelectPlan,
-  } = useSubscription();
+  const { data: defaultValues, setSubscriptionData } = useSubscription();
 
   const {
     register,
@@ -56,9 +53,7 @@ export default function SelectPlanForm() {
     formState: { errors },
   } = useForm<SelectPlanInputs>({
     resolver: zodResolver(selectPlanSchema),
-    defaultValues: {
-      ...selectPlan,
-    },
+    defaultValues,
   });
 
   const billingMethod: keyof PriceProps = watch("billed-yearly")
@@ -67,11 +62,11 @@ export default function SelectPlanForm() {
 
   const onSubmit: SubmitHandler<SelectPlanInputs> = useCallback(
     (data) => {
-      setSelectPlan(data);
+      setSubscriptionData(data);
 
       push("/steps/add-ons");
     },
-    [setSelectPlan, push]
+    [setSubscriptionData, push]
   );
 
   return (

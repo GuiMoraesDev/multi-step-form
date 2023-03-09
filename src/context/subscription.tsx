@@ -10,27 +10,20 @@ import {
 
 import { PersonalInfoInputs, SelectPlanInputs } from "schemas";
 
-type SubscriptionDTO = {
-  personalInfo: PersonalInfoInputs;
-  selectPlan: SelectPlanInputs;
-};
+type SubscriptionDTO = PersonalInfoInputs & SelectPlanInputs;
+type SetSubscriptionProps = PersonalInfoInputs | SelectPlanInputs;
 
 type SubscriptionContextData = {
   data: SubscriptionDTO;
-  setPersonalInfo: (personalInfo: SubscriptionDTO["personalInfo"]) => void;
-  setSelectPlan: (selectPlan: SubscriptionDTO["selectPlan"]) => void;
+  setSubscriptionData: (data: SetSubscriptionProps) => void;
 };
 
 const SubscriptionDefaultValues = {
-  personalInfo: {
-    name: "",
-    email: "",
-    phone: "",
-  },
-  selectPlan: {
-    "select-plan": "",
-    "billed-yearly": false,
-  },
+  name: "",
+  email: "",
+  phone: "",
+  "select-plan": "",
+  "billed-yearly": false,
 };
 
 const SubscriptionContext = createContext<SubscriptionContextData>(
@@ -40,32 +33,18 @@ const SubscriptionContext = createContext<SubscriptionContextData>(
 const SubscriptionProvider = ({ children }: PropsWithChildren) => {
   const [data, setData] = useState<SubscriptionDTO>(SubscriptionDefaultValues);
 
-  const setPersonalInfo = useCallback(
-    (personalInfo: SubscriptionDTO["personalInfo"]) => {
-      setData((state) => ({
-        ...state,
-        personalInfo,
-      }));
-    },
-    []
-  );
-
-  const setSelectPlan = useCallback(
-    (selectPlan: SubscriptionDTO["selectPlan"]) => {
-      setData((state) => ({
-        ...state,
-        selectPlan,
-      }));
-    },
-    []
-  );
+  const setSubscriptionData = useCallback((data: SetSubscriptionProps) => {
+    setData((state) => ({
+      ...state,
+      ...data,
+    }));
+  }, []);
 
   return (
     <SubscriptionContext.Provider
       value={{
         data,
-        setPersonalInfo,
-        setSelectPlan,
+        setSubscriptionData,
       }}
     >
       {children}

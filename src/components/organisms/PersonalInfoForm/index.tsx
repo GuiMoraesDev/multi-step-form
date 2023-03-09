@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
-import { useForm , SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 import Button from "components/atoms/Button";
 import Form from "components/molecules/Form";
@@ -15,10 +15,7 @@ import { PersonalInfoInputs, personalInfoSchema } from "schemas";
 export default function PersonalInfoForm() {
   const { push } = useRouter();
 
-  const {
-    data: { personalInfo },
-    setPersonalInfo,
-  } = useSubscription();
+  const { data: defaultValues, setSubscriptionData } = useSubscription();
 
   const {
     register,
@@ -26,18 +23,16 @@ export default function PersonalInfoForm() {
     formState: { errors },
   } = useForm<PersonalInfoInputs>({
     resolver: zodResolver(personalInfoSchema),
-    defaultValues: {
-      ...personalInfo,
-    },
+    defaultValues,
   });
 
   const onSubmit: SubmitHandler<PersonalInfoInputs> = useCallback(
     (data) => {
-      setPersonalInfo(data);
+      setSubscriptionData(data);
 
       push("/steps/select-plan");
     },
-    [setPersonalInfo, push]
+    [setSubscriptionData, push]
   );
 
   return (
