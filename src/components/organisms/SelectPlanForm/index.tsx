@@ -14,6 +14,32 @@ import Button from "components/atoms/Button";
 import ErrorMessage from "components/atoms/ErrorMessage";
 import Switcher from "components/atoms/Switcher";
 
+type PriceProps = {
+  monthly: string;
+  yearly: string;
+};
+
+type PriceOptions = {
+  arcade: PriceProps;
+  advanced: PriceProps;
+  pro: PriceProps;
+};
+
+const prices: PriceOptions = {
+  arcade: {
+    monthly: "$9/mo",
+    yearly: "$90/yr",
+  },
+  advanced: {
+    monthly: "$12/mo",
+    yearly: "$120/yr",
+  },
+  pro: {
+    monthly: "$15/mo",
+    yearly: "$150/yr",
+  },
+};
+
 export default function SelectPlanForm() {
   const { push } = useRouter();
 
@@ -34,6 +60,10 @@ export default function SelectPlanForm() {
     },
   });
 
+  const billingMethod: keyof PriceProps = watch("billed-yearly")
+    ? "yearly"
+    : "monthly";
+
   const onSubmit: SubmitHandler<SelectPlanInputs> = useCallback(
     (data) => {
       setSelectPlan(data);
@@ -50,13 +80,13 @@ export default function SelectPlanForm() {
       onSubmit={handleSubmit(onSubmit, onSubmitError)}
     >
       <div className="flex flex-col items-center justify-between gap-4">
-        <section className="flex items-center justify-between gap-4 w-full">
+        <section className="relative flex items-center justify-between pb-6 gap-4 w-full">
           <SelectableCards
             image_src="/assets/images/icon-arcade.svg"
             image_alt="arcade"
             title="Arcade"
             value="arcade"
-            price="$9/mo"
+            price={prices.arcade[billingMethod]}
             {...register("select-plan")}
           />
 
@@ -64,8 +94,9 @@ export default function SelectPlanForm() {
             image_src="/assets/images/icon-advanced.svg"
             image_alt="advanced"
             title="Advanced"
-            price="$12/mo"
+            price={prices.advanced[billingMethod]}
             value="advanced"
+            isRecommended
             {...register("select-plan")}
           />
 
@@ -73,12 +104,16 @@ export default function SelectPlanForm() {
             image_src="/assets/images/icon-pro.svg"
             image_alt="pro"
             title="Pro"
-            price="$15/mo"
+            price={prices.pro[billingMethod]}
             value="pro"
             {...register("select-plan")}
           />
 
-          <ErrorMessage errorMessage={errors["select-plan"]?.message} />
+          <ErrorMessage
+            errorMessage={errors["select-plan"]?.message}
+            positionY="bottom"
+            positionX="center"
+          />
         </section>
 
         <Switcher

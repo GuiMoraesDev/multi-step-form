@@ -1,5 +1,5 @@
 import AddOnsForm from "components/organisms/AddOnsForm";
-import StepsNav from "components/organisms/StepsNav";
+import StepsNav from "components/molecules/StepsNav";
 
 export const metadata = {
   title: "Pick add-ons",

@@ -7,7 +7,6 @@ import {
   PropsWithChildren,
   useCallback,
 } from "react";
-import { parseCookies, setCookie } from "nookies";
 
 import { PersonalInfoInputs, SelectPlanInputs } from "schemas";
 
@@ -30,7 +29,7 @@ const SubscriptionDefaultValues = {
   },
   selectPlan: {
     "select-plan": "",
-    "billed-yearly": "",
+    "billed-yearly": false,
   },
 };
 
@@ -39,27 +38,7 @@ const SubscriptionContext = createContext<SubscriptionContextData>(
 );
 
 const SubscriptionProvider = ({ children }: PropsWithChildren) => {
-  const [data, setData] = useState<SubscriptionDTO>(() => {
-    const cookies = parseCookies();
-
-    const personalInfoCookies = cookies?.personalInfo
-      ? JSON.parse(cookies?.personalInfo)
-      : undefined;
-    const selectPlanCookies = cookies?.selectPlan
-      ? JSON.parse(cookies?.selectPlan)
-      : undefined;
-
-    return {
-      personalInfo: {
-        ...SubscriptionDefaultValues.personalInfo,
-        ...personalInfoCookies,
-      },
-      selectPlan: {
-        ...SubscriptionDefaultValues.selectPlan,
-        ...selectPlanCookies,
-      },
-    };
-  });
+  const [data, setData] = useState<SubscriptionDTO>(SubscriptionDefaultValues);
 
   const setPersonalInfo = useCallback(
     (personalInfo: SubscriptionDTO["personalInfo"]) => {
@@ -67,11 +46,6 @@ const SubscriptionProvider = ({ children }: PropsWithChildren) => {
         ...state,
         personalInfo,
       }));
-
-      setCookie(null, "personalInfo", JSON.stringify(personalInfo), {
-        maxAge: 5 * 60 * 60, //max age of 5 hours
-        path: "/",
-      });
     },
     []
   );
@@ -82,11 +56,6 @@ const SubscriptionProvider = ({ children }: PropsWithChildren) => {
         ...state,
         selectPlan,
       }));
-
-      setCookie(null, "selectPlan", JSON.stringify(selectPlan), {
-        maxAge: 5 * 60 * 60, //max age of 5 hours
-        path: "/",
-      });
     },
     []
   );

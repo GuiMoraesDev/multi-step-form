@@ -1,4 +1,4 @@
-import StepLink from "../../molecules/StepLink";
+import StepIndex from "../../atoms/StepIndex";
 
 type Steps = "personal-info" | "select-plan" | "add-ons" | "summary";
 
@@ -11,37 +11,33 @@ export default function StepsNav({ currStep }: Props) {
     <nav className="flex xl:bg-bottom bg-center bg-[length:150%] p-6 rounded-md w-full xl:w-1/4 bg-[url('/assets/images/bg-sidebar-mobile.svg')] xl:bg-[url('/assets/images/bg-sidebar-desktop.svg')]">
       <ul className="flex xl:flex-col gap-4">
         <li>
-          <StepLink
+          <StepIndex
             number={1}
             title="Your info"
-            href="/steps/personal-info"
             isSelected={currStep === "personal-info"}
           />
         </li>
 
         <li>
-          <StepLink
+          <StepIndex
             number={2}
             title="Select plan"
-            href="/steps/select-plan"
             isSelected={currStep === "select-plan"}
           />
         </li>
 
         <li>
-          <StepLink
+          <StepIndex
             number={3}
             title="Add-ons"
-            href="/steps/add-ons"
             isSelected={currStep === "add-ons"}
           />
         </li>
 
         <li>
-          <StepLink
+          <StepIndex
             number={4}
             title="Summary"
-            href="/steps/summary"
             isSelected={currStep === "summary"}
           />
         </li>

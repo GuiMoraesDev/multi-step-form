@@ -1,4 +1,4 @@
-import StepsNav from "components/organisms/StepsNav";
+import StepsNav from "components/molecules/StepsNav";
 import SummaryForm from "components/organisms/SummaryForm";
 
 export const metadata = {

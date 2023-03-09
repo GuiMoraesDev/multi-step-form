@@ -1,20 +1,16 @@
-import Link from "next/link";
-
 type Props = {
   number: number;
   title: string;
-  href: string;
   isSelected: boolean;
 };
 
-export default function StepLink({
+export default function StepIndex({
   number,
   title,
-  href,
   isSelected = false,
 }: Props) {
   return (
-    <Link href={href} className="flex gap-4 text-sm uppercase">
+    <div className="flex gap-4 text-sm uppercase">
       <span
         className={`flex items-center justify-center font-bold text-center h-9 w-9 rounded-full border-2 border-pastel-blue ${
           isSelected
@@ -29,6 +25,6 @@ export default function StepLink({
         <p className="text-xs text-pastel-blue">{`Step ${number}`}</p>
         <strong className="font-bold text-white">{title}</strong>
       </section>
-    </Link>
+    </div>
   );
 }
