@@ -15,7 +15,7 @@ export default function ErrorMessage({
   const XAxis = positionX === "center" ? "w-full text-center" : `${positionX}-0`;
 
   return (
-    <span className={`absolute text-strawberry-red ${YAxis} ${XAxis}`}>
+    <span className={`absolute text-strawberry-red text-sm ${YAxis} ${XAxis}`}>
       {errorMessage}
     </span>
   );
